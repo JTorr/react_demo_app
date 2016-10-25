@@ -68,3 +68,22 @@ div.note > textarea {
   right: 10px;
   font-size: 1.5em;
 }
+
+div.banner {
+  height: 50px;
+  width: 100%;
+  background-color: white;
+  margin: 2px 0;
+  position: relative;
+  cursor: -webkit-grab;
+  box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
+  overflow: hidden;
+}
+
+div.banner p {
+  margin: 0;
+  font-size: 32px;
+  text-align: center;
+  padding: 5px;
+  font-family: "Shadows Into Light", Arial;
+}
