@@ -18,4 +18,13 @@ class App extends Component {
   }
 }
 
+/* Stateless Functional Syntax:
+ *
+ * const MyComponent = () => {
+ *   render() {
+ *     <div className="myClass"></div>
+ *   }
+ * }
+ */
+
 export default App;
