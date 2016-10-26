@@ -2,7 +2,6 @@ React Teaching App
 ======
 
 This app is a walkthrough for creating your first React app.
-There are multiple checkpoints, allowing you to 'reset' if you fall behind the group.
 
 Pre-Setup Instructions: Installing NPM
 ------
@@ -52,13 +51,13 @@ App Setup Instructions
 2. Clone the app:
 
  ```
- git clone https://github.com/JTorr/react_teaching_app.git
+ git clone https://github.com/JTorr/react_demo_app.git
  ```
 
 3. CD into the directory you cloned the app into.
 
  ```
- cd react_teaching_app
+ cd react_demo_app
  ```
 
 4. Install the node packages the app depends on
