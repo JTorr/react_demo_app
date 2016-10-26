@@ -55,10 +55,10 @@ App Setup Instructions
  git clone https://github.com/JTorr/react_teaching_app.git
  ```
 
-3. CD into the directory you cloned the app into, and then into the /00_starting_point directory.
+3. CD into the directory you cloned the app into.
 
  ```
- cd react_teaching_app/00_starting_point
+ cd react_teaching_app
  ```
 
 4. Install the node packages the app depends on
