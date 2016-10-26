@@ -91,3 +91,11 @@ Step Five: Add Ability to Save Updated Note Text
    instead of `this.props.children`
 8. Inside the save() function, set state.text to whatever was entered in the
    text field. That can be accessed with `this.refs.newText.value`.
+
+HOMEWORK
+------
+
+Create an Arrow Randomizer, like the one the TSA reportedly spent $47,000 on:
+http://fusion.net/story/287525/tsa-300-thousand-dollars-randomizer-app/
+You can remove the Note component and use this app, or start a new app just like
+this from the command line with `create-react-app`.
