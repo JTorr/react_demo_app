@@ -55,7 +55,9 @@ These steps allow you to use the same component for Notes with different text.
 Step Four: Add Ability to Edit Note Text
 ------
 
-1. Create a constructor in the Note component and set the intial state to `{editing: false}`
+1. Create a constructor in the Note component and set the intial state to `{editing: false}`.
+
+  ```
   class Note extends Component {
     constructor() {
       super();
@@ -66,7 +68,9 @@ Step Four: Add Ability to Edit Note Text
     ...
   }
   ```
+
 2. Under the `<p>` tag in the Note Component, add a `<span>` with an Edit `<button>` inside.
+
    ```
    <span>
      <button>EDIT</button>
@@ -75,6 +79,7 @@ Step Four: Add Ability to Edit Note Text
 3. Create the edit() function on the Note component. It should set the state to
    editing: true. You can also add an alert, to verify that edit funtion is
    called.
+
    ```
    edit() {
      alert('editing')
@@ -82,6 +87,7 @@ Step Four: Add Ability to Edit Note Text
    }
    ```
 4. In the constructor, bind `this` in the edit() function to the component instance.
+
   ```
   constructor() {
     super();
@@ -104,6 +110,7 @@ Step Five: Add Ability to Save Updated Note Text
 2. Rename the render() function to renderNote()
 3. Create a renderForm() function that will be displayed when Edit is clicked.
    It should return a div with a `textarea` and a Save button.
+
   ```
   renderForm() {
     return (
@@ -115,6 +122,7 @@ Step Five: Add Ability to Save Updated Note Text
   }
   ```
 4. Create a new render() function that returns this.renderForm() if `this.state.editing` is true, or this.renderNote() if false.
+
   ```
   render() {
     return (this.state.editing) ? this.renderForm() : this.renderNote()
@@ -123,12 +131,14 @@ Step Five: Add Ability to Save Updated Note Text
 5. Add a reference to allow retrieval of the user's input in the text area: `<textarea ref="newText">`
 6. In the constructor, call `super(props)` instead of `super()`. This will give
    you access to `this.props` in the constructor.
+
    ```
    constructor(props) {
      super(props);
      ...
     }
    ```
+
 7. Modify the constructor() function to return a state of `{editing: false, text: this.props.children}`. This will store the note's initial text in the state.
 8. Change the `<p>` element inside of renderNote() to display `this.state.text`
    instead of `this.props.children`
