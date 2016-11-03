@@ -55,47 +55,85 @@ These steps allow you to use the same component for Notes with different text.
 Step Four: Add Ability to Edit Note Text
 ------
 
-1. Add a getInitialState() function to the Note component.
-  ```
-  getInitialState() {
-    return {editing: false}
+1. Create a constructor in the Note component and set the intial state to `{editing: false}`
+  class Note extends Component {
+    constructor() {
+      super();
+      this.state = {
+        editing: false
+      }
+    }
+    ...
   }
   ```
-2. Add a `<span>` to the Note component with an Edit `<button>` and Delete
-   `<button>` inside.
-3. Add an onClick event to the button that calls an edit function.
-
-  ```
-  <button onClick={this.edit()}></button>
-  ```
+2. Under the `<p>` tag in the Note Component, add a `<span>` with an Edit `<button>` inside.
+   ```
+   <span>
+     <button>EDIT</button>
+  </span>
+   ```
 3. Create the edit() function on the Note component. It should set the state to
-   editing: true.
-
+   editing: true. You can also add an alert, to verify that edit funtion is
+   called.
    ```
    edit() {
+     alert('editing')
      this.setState({editing: true})
    }
    ```
+4. In the constructor, bind `this` in the edit() function to the component instance.
+  ```
+  constructor() {
+    super();
+    this.edit = this.edit.bind(this);
+    ...
+  }
+  ```
+
+5. Add an onClick event to the button that calls an edit function.
+
+  ```
+    <button onClick={() => this.edit()}>EDIT</button>
+  ```
+
 
 Step Five: Add Ability to Save Updated Note Text
 ------
 
 1. Create a save() function. It should change the editing state back to false
 2. Rename the render() function to renderNote()
-3. Create a renderForm() function. It should return a `<div>` with a `<textarea>` and a `<button>` that `onClick`, calls `this.save`.
+3. Create a renderForm() function that will be displayed when Edit is clicked.
+   It should return a div with a `textarea` and a Save button.
+  ```
+  renderForm() {
+    return (
+      <div className="note">
+        <textarea></textarea>
+        <button>Save</button>
+      </div>
+        )
+  }
+  ```
 4. Create a new render() function that returns this.renderForm() if `this.state.editing` is true, or this.renderNote() if false.
+  ```
+  render() {
+    return (this.state.editing) ? this.renderForm() : this.renderNote()
+  }
+  ```
 5. Add a reference to allow retrieval of the user's input in the text area: `<textarea ref="newText">`
-6. Modify the getInitialState() function to return `{editing: false, text:
-   this.props.children}`
-7. Change the `<p>` element inside of renderNote() to display `this.state.text`
+6. In the constructor, call `super(props)` instead of `super()`. This will give
+   you access to `this.props` in the constructor.
+   ```
+   constructor(props) {
+     super(props);
+     ...
+    }
+   ```
+7. Modify the constructor() function to return a state of `{editing: false, text: this.props.children}`. This will store the note's initial text in the state.
+8. Change the `<p>` element inside of renderNote() to display `this.state.text`
    instead of `this.props.children`
-8. Inside the save() function, set state.text to whatever was entered in the
+9. Inside the save() function, set state.text to whatever was entered in the
    text field. That can be accessed with `this.refs.newText.value`.
-
-HOMEWORK
-------
-
-Create an Arrow Randomizer, like the one the TSA reportedly spent $47,000 on:
-http://fusion.net/story/287525/tsa-300-thousand-dollars-randomizer-app/
-You can remove the Note component and use this app, or start a new app just like
-this from the command line with `create-react-app`.
+10. Add an onClick event to that calls save() to the button in renderForm()
+11. Remove the `alert` from your edit function. You can now edit the Note's
+    text.
