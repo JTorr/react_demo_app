@@ -26,9 +26,32 @@ Step Two: Create a Stateless Banner Component
 
 1. Create a Banner Component using the stateless functional syntax.
 2. Create a `<div>` inside of the Banner component with className 'banner'
+
+   ```
+   import React from 'react';
+   import './App.css';
+
+   const Banner = () => {
+     return (
+       <div className="banner">
+       </div>
+     )
+   };
+
+   export default Banner;
+   ```
 3. In public/index.html, add a `<div>` above the root `<div>`. Give it an id of
    'banner'
 4. In src/index.js, render the Banner component.
+
+   ```
+   import Banner from './Banner';
+   ...
+   ReactDOM.render(
+     <Banner />,
+     document.getElementById('banner')
+   );
+   ```
 
 Step Three: Make the Note Component Reusable
 ------
@@ -69,12 +92,13 @@ Step Four: Add Ability to Edit Note Text
   }
   ```
 
-2. Under the `<p>` tag in the Note Component, add a `<span>` with an Edit `<button>` inside.
+2. Add a `<p>` tag in the Note Component with some text, and a `<span>` with an Edit `<button>` inside.
 
    ```
+   <p>Some Initial Text</p>
    <span>
      <button>EDIT</button>
-  </span>
+   </span>
    ```
 3. Create the edit() function on the Note component. It should set the state to
    editing: true. You can also add an alert, to verify that edit funtion is
@@ -128,8 +152,9 @@ Step Five: Add Ability to Save Updated Note Text
     return (this.state.editing) ? this.renderForm() : this.renderNote()
   }
   ```
-5. Add a reference to allow retrieval of the user's input in the text area: `<textarea ref="newText">`
-6. In the constructor, call `super(props)` instead of `super()`. This will give
+5. Add an onClick event to that calls save() to the button in renderForm()
+6. Add a reference to allow retrieval of the user's input in the text area: `<textarea ref="newText">`
+7. In the constructor, call `super(props)` instead of `super()`. This will give
    you access to `this.props` in the constructor.
 
    ```
@@ -139,11 +164,40 @@ Step Five: Add Ability to Save Updated Note Text
     }
    ```
 
-7. Modify the constructor() function to return a state of `{editing: false, text: this.props.children}`. This will store the note's initial text in the state.
-8. Change the `<p>` element inside of renderNote() to display `this.state.text`
-   instead of `this.props.children`
-9. Inside the save() function, set state.text to whatever was entered in the
+8. Define a prop called `text` in in `index.js` where the Note is rendered.
+
+   ```
+   ReactDOM.render(
+     <Note text="Initial text"></Note>,
+     document.getElementById('root')
+   );
+   ```
+9. Change the `<p>` element inside of renderNote() to display `this.state.text`
+   instead of static text.
+
+    ```
+    renderNote() {
+      return (
+        <div className="note">
+          <h1>My Text</h1>
+          <p>{this.state.text}</p>
+        ...
+    ```
+10. Update the initial state to reference `this.props.text`.
+
+   ```
+    this.state = {
+      editing: false,
+      text: this.props.text
+    }
+   ```
+11. Inside the save() function, set state.text to whatever was entered in the
    text field. That can be accessed with `this.refs.newText.value`.
-10. Add an onClick event to that calls save() to the button in renderForm()
-11. Remove the `alert` from your edit function. You can now edit the Note's
+
+   ```
+   save() {
+     this.setState({editing: false, text: this.refs.newText.value})
+   }
+   ```
+12. Remove the `alert` from your edit function. You can now edit the Note's
     text.
