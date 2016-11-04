@@ -1,7 +1,8 @@
 React Teaching App
 ======
 
-This app is a walkthrough for creating your first React app.
+This app is a walkthrough for creating your first React app. Checkout the
+`solution` branch to see the final product.
 
 Pre-Setup Instructions: Installing NPM
 ------
