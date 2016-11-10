@@ -201,3 +201,32 @@ Step Five: Add Ability to Save Updated Note Text
    ```
 12. Remove the `alert` from your edit function. You can now edit the Note's
     text.
+
+Step Six: Optional Task with no Instructions
+------
+
+Update the Note component to allow you to edit and save the text in the `<h1>` element.
+Hint: You will need to make updates in the following files: Note.js. index.js,
+and App.css (size of text box)
+
+Step Seven: Create a Column Component
+------
+
+1. Create a new file, with a component called `Column`. Have the column render
+   an empty `<div>` with className 'column'. Use the Note component
+   for reference.
+2. In index.js, remove the Banner and Note components, and render the Column
+   instead.
+3. In the Column component, render one or more Note components:
+
+   ```
+   class Column extends Component {
+     render() {
+       return (
+         <div className="column">
+           <Note text="Initial Text" title="Title Text"> </Note>
+         </div>
+       )
+     }
+   };
+   ```

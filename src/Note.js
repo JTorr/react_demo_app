@@ -6,6 +6,7 @@ class Note extends Component {
     super(props);
     this.state = {
       editing: false,
+      titleText: this.props.title,
       text: this.props.text
     }
     this.edit = this.edit.bind(this);
@@ -14,11 +15,15 @@ class Note extends Component {
     this.setState({editing: true})
   }
   save() {
-    this.setState({editing: false, text: this.refs.newText.value})
+    this.setState({editing: false,
+                  text: this.refs.newText.value,
+                  titleText: this.refs.title.value
+    })
   }
   renderForm() {
     return (
       <div className="note">
+        <textarea ref="title"></textarea>
         <textarea ref="newText"></textarea>
         <button onClick={() => this.save()}>Save</button>
       </div>
@@ -27,9 +32,9 @@ class Note extends Component {
   renderNote() {
     return (
       <div className="note">
-        <h1>My Text</h1>
-        <p>{this.state.text}</p>
+        <h1>{this.state.titleText}</h1>
           <span>
+        <p>{this.state.text}</p>
             <button onClick={() => this.edit()}>EDIT</button>
           </span>
       </div>
