@@ -230,3 +230,18 @@ Step Seven: Create a Column Component
      }
    };
    ```
+
+Step Eight: Store Notes in Column State (TODO: make these instructions more
+specific; add code examples)
+------
+
+1. Create a constructor for the Note component, adding `notes` and `nextId` to
+   the state.
+2. Create an `add` function that allows you to add a new note
+3. Create a `nextId` function to increment the id each time a new note is added.
+   Use this function to assign ids to newly created notes.
+4. Update render() function to display the array of notes
+5. Add a button inside the render() function that calls `add` on click.
+
+Step Nine: Position Notes
+------
